@@ -3,6 +3,8 @@
 Created on Tue May 31 17:51:18 2022
 
 @author: u0136350
+
+Geraldine Rodriguez Nieto
 """
 
 
@@ -14,11 +16,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 # Load some example data
 #tips = sns.load_dataset("tips")
-
-
-
-
-# https://stackoverflow.com/questions/68154123/matplotlib-grouped-bar-chart-with-individual-data-points
 
 
 
@@ -52,16 +49,6 @@ GROUP = df['GROUP']
 gp = df['group']
 
 
-#data_young = data[data['AGE']<40]
-#data_old = data[data['AGE']>40] 
-#df_young_NAA = pd.DataFrame(data_young, columns = NAA)
-#df_old_NAA = pd.DataFrame(data_old, columns = NAA)
-
-
-#df_young[df_young<.000001]=np.nan #to exclude values equal to zero -missing data- in correlation. exchange zeros for NaN
-#df_old[df_old<.000001]=np.nan 
-
-
 # Draw the bar chart
 ax = sns.violinplot(
     data=df, 
@@ -78,7 +65,7 @@ ax = sns.violinplot(
 # Get the legend from just the bar chart
 #handles, labels = ax.get_legend_handles_labels()
 
-# Draw the stripplot, swarmplot   //// the violin plot and the swamplot alone (without barplot look better 
+# Draw the stripplot, swarmplot   //// the violin plot and the swamplot alone 
 
 #plt.figure(figsize=(7,7))
 sns.swarmplot(
@@ -106,26 +93,6 @@ ax.legend(
 
 
 ....
-
-
-
-#data = pd.read_csv('C:/Users/u0136350/Documents/KU_Brain/GABA/Metabolites_correctedByTissueComposition_woOutliersOron.csv', na_values='', sep=',')
-#data_m = pd.read_csv('G:/KU_Leuven/GABA/MetabolitesT.csv', na_values='', sep=';', decimal=",")
-
-
-#cols = ['LSM1_NAA','RSM1_NAA','LSTR_NAA','RSTR_NAA','PreSMA_NAA','RIFG_NAA','OCC_NAA','LSM1_Cho','RSM1_Cho','LSTR_Cho','RSTR_Cho','PreSMA_Cho','RIFG_Cho','OCC_Cho','LSM1_Cr','RSM1_Cr','LSTR_Cr','RSTR_Cr','PreSMA_Cr','RIFG_Cr','OCC_Cr','LSM1_Glx','RSM1_Glx','LSTR_Glx','RSTR_Glx','PreSMA_Glx','RIFG_Glx','OCC_Glx','LSM1_mIns','RSM1_mIns','LSTR_mIns','RSTR_mIns','PreSMA_mIns','RIFG_mIns','OCC_mIns'] 
-
-
-#df = pd.DataFrame(data, columns = cols)
-
-#data_young = data[data['AGE']<40]
-#data_old = data[data['AGE']>40] 
-#df_young = pd.DataFrame(data_young, columns = cols)
-3df_old = pd.DataFrame(data_old, columns = cols)
-
-##df=df.fillna(0)    #to replace NaN for zeros, but Metabolites database imputed NaN with Average (very few)
-##df['LSM1_NAA'].dtype
-##LSM1_NAA_int=data['LSM1_NAA'].astype(np.int)
 
 
 #*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*CORRELATION*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\
