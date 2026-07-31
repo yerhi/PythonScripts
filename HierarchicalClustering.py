@@ -3,38 +3,30 @@
 Created on Thu Jun 17 11:06:11 2021
 
 @author: u0136350
+
+Geraldine Rodriguez Nieto
 """
 
 
 # Python 3.7 GRN Metabolites project
 # Metabolites file: missing values were imputed (with average of age group). (except porone row which was fully deleted because only data from LSAM1 was available)
 
-#Note: it seems that to transform to data frame, pandas only likes CSV - MSDOS // Or the separator used when reading the csv file
-#To change commas to dots in excel go to File , Advanced, uncheck the Use system separators case and place dot in both next cases
-
-# https://www.mltut.com/hierarchical-clustering-in-python-step-by-step-complete-guide/
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 import scipy.cluster.hierarchy as shc
 
-
 from pylab import rcParams
-
 from sklearn.preprocessing import normalize
 from sklearn.cluster import AgglomerativeClustering
 import sklearn.metrics as sm 
 from sklearn.preprocessing import scale
-
 from sklearn.preprocessing import StandardScaler, normalize
 
 # Cluster subjects
 
 data = pd.read_csv('C:/Users/u0136350/Documents/KU_Brain/GABA/Metabolites_correctedByTissueComposition_woOutliersMocaAndReplacingZ325_forHC.csv', na_values='', sep=',')
-#data = pd.read_csv('G:/KU_Leuven/GABA/Metabolites.csv', na_values='', sep=';')
 
 cols = ['LSM1_NAA','LSM1_Cho','LSM1_Cr','LSM1_Glx','LSM1_mIns','RSM1_NAA','RSM1_Cho','RSM1_Cr','RSM1_Glx','RSM1_mIns','LSTR_NAA','LSTR_Cho','LSTR_Cr','LSTR_Glx','LSTR_mIns','RSTR_NAA','RSTR_Cho','RSTR_Cr','RSTR_Glx','RSTR_mIns','OCC_NAA','OCC_Cho','OCC_Cr','OCC_Glx','OCC_mIns','PreSMA_NAA','PreSMA_Cho','PreSMA_Cr','PreSMA_Glx','PreSMA_mIns','RIFG_NAA','RIFG_Cho','RIFG_Cr','RIFG_Glx','RIFG_mIns']
 
@@ -43,7 +35,6 @@ df = pd.DataFrame(data, columns = cols)
 sc = StandardScaler()
 dfscaled = sc.fit_transform(df)
 df_normalized = normalize(dfscaled)
-
 
 df_normalized = pd.DataFrame(df_normalized, columns=cols)
 
@@ -66,7 +57,6 @@ sns.clustermap(dfscaled, metric = 'euclidean', cmap = 'coolwarm', figsize = (7,7
 plt.figure(figsize=(20,14))
 plt.scatter(df_scaled['RSM1_Glx'], df_scaled['RSM1_mIns'], c=cluster.labels_)
 
-#Testing diffferent models https://www.datasciencelearner.com/how-to-do-hierarchical-clustering-in-python/
 
 ###########################################################################################################
 #Cluster metabolites 
@@ -78,10 +68,7 @@ data_m = pd.read_csv('C:/Users/u0136350/Documents/KU_Brain/GABA/Metabolites_corr
 #df_m = pd.DataFrame(data_m, columns = cols_s)
 
 
-
-
 cols = ['LSM1_NAA','LSM1_Cho','LSM1_Cr','LSM1_Glx','LSM1_mIns','RSM1_NAA','RSM1_Cho','RSM1_Cr','RSM1_Glx','RSM1_mIns','LSTR_NAA','LSTR_Cho','LSTR_Cr','LSTR_Glx','LSTR_mIns','RSTR_NAA','RSTR_Cho','RSTR_Cr','RSTR_Glx','RSTR_mIns','OCC_NAA','OCC_Cho','OCC_Cr','OCC_Glx','OCC_mIns','PreSMA_NAA','PreSMA_Cho','PreSMA_Cr','PreSMA_Glx','PreSMA_mIns','RIFG_NAA','RIFG_Cho','RIFG_Cr','RIFG_Glx','RIFG_mIns']
-
 
 df = pd.DataFrame(data_m, columns = cols)
 
@@ -98,10 +85,6 @@ dft_normalized = normalize(dftscaled)
 
 plt.figure(figsize=(20,14))
 dend_m = shc.dendrogram(shc.linkage(dft_normalized, method='ward'), leaf_rotation=45, leaf_font_size=11, show_contracted=True)
-
-
-
-
 
 k = 3
 
